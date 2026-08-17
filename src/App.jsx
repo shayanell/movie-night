@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import Search from './components/Search.jsx'
 import Spinner from './components/Spinner.jsx';
 import MovieCard from './components/MovieCard.jsx';
+import HeroBanner from './components/HeroBanner.jsx';
 import { useDebounce } from 'react-use'
 
 const API_BASE_URL = 'https://api.themoviedb.org/3'
@@ -66,7 +67,15 @@ function App() {
       <div className='pattern'/>
       <div className='wrapper'> 
         <header>
-          <img src='./hero.png' alt='Hero Banner'/>
+           {isLoading ? (
+              <Spinner />
+            ) : errorMessage ? (
+              <p className='text-red-500'>{errorMessage}</p>
+            ) : (
+              <ul>
+                <HeroBanner movies={movieList.slice(0, 3)} />
+              </ul>
+            )}
           <h1>Find <span className='text-gradient'>Movies</span> You'll Enjoy Without the Hassle</h1>
           <Search searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
         </header>

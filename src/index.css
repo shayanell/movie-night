@@ -140,8 +140,28 @@
       @apply text-gray-100 font-medium text-base;
     }
   }
-}
 
+  .banner-posters {
+    @apply relative w-full h-80 flex items-center justify-center mx-auto max-w-2xl mb-20 mt-30;
+    perspective: 1200px;
+
+    & .poster {
+      @apply absolute rounded-lg object-cover drop-shadow-2xl/100 transition-transform duration-300 w-50;
+    }
+
+    & .left-poster {
+      @apply z-1 left-15 -rotate-15;
+    }
+
+    & .center-poster {
+      @apply w-60 z-10 -top-10;    
+    }
+
+    & .right-poster {
+      @apply z-1 right-15 rotate-15;
+    }
+  }
+}
 @utility text-gradient {
   @apply bg-linear-to-r from-[#D6C7FF] to-[#AB8BFF] bg-clip-text text-transparent;
 }
